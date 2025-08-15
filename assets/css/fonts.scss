@@ -1,0 +1,48 @@
+.fz-10 {
+  font-size: 8px;
+  line-height: 10px;
+
+  @include widescreen {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+.fz-12 {
+  font-size: 12px;
+  line-height: 14px;
+
+  @include widescreen {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+.fz-14 {
+  font-size: 12px;
+  line-height: 14px;
+
+  @include widescreen {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.fz-16 {
+  font-size: 14px;
+  line-height: 16px;
+
+  @include widescreen {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+
+.fz-18 {
+  font-size: 16px;
+  line-height: 18px;
+
+  @include widescreen {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
