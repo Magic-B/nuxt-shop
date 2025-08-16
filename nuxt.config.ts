@@ -5,4 +5,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['nuxt-quasar-ui'],
   css: ['~/assets/css/global.scss'],
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.API_URL,
+    }
+  }
 })
