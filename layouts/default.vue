@@ -1,7 +1,7 @@
 <template>
   <q-layout>
-    <q-header>
-      <q-toolbar class="flex justify-between">
+    <q-header class="header">
+      <q-toolbar class="header__toolbar">
         <div class="flex items-center gap-5">
           <div class="flex items-center cursor-pointer">
             <q-icon size="28px" name="shopping_bag" />
@@ -26,7 +26,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-page-container>
+    <q-page-container class="page-container">
       <NuxtPage />
     </q-page-container>
   </q-layout>
@@ -58,3 +58,22 @@ const links = [
 
 const search = ref('')
 </script>
+
+<style lang="scss" scoped>
+.header {
+  margin: 0 1rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  &__toolbar {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.page-container {
+  padding-top: 70px !important;
+  padding: 0 1rem;
+}
+</style>
