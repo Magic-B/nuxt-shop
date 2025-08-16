@@ -1,32 +1,29 @@
 <template>
   <q-card class="product-card">
-    <div @click="navigateToProduct(product.id)" class="product-card__image">
+    <div @click="emit('navigate', product.id)" class="product-card__image">
       <img :src="product.image">
     </div>
 
     <q-card-section>
-      <div @click="navigateToProduct(product.id)" class="product-card__title">{{ truncate(product.title, 35) }}</div>
-      <div class="text-subtitle2">{{ product.price }}</div>
+      <div @click="emit('navigate', product.id)" class="product-card__title">{{ truncate(product.title, 35) }}</div>
+      <div class="text-subtitle2">{{ priceFormat(product.price) }}</div>
     </q-card-section>
   </q-card>
 </template>
 
 <script setup lang="ts">
 import type { Product } from '~/types/products'
-import { Routes } from '~/types/routes';
 import { truncate } from '~/utils/string';
+import { priceFormat } from '~/utils/price';
 
 interface Props {
   product: Product
 }
 
 const props = withDefaults(defineProps<Props>(), {})
-
-const router = useRouter()
-
-const navigateToProduct = (id: number) => {
-  router.push(Routes.PRODUCT(id))
-}
+const emit = defineEmits<{
+  (e: 'navigate', id: number): void
+}>()
 </script>
 
 <style lang="scss" scoped>
@@ -47,7 +44,7 @@ const navigateToProduct = (id: number) => {
     cursor: pointer;
 
     &:hover {
-      color: var(--q-primary);
+      color: var(--primary);
     }
   }
 }

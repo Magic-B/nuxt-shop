@@ -3,7 +3,7 @@
     <q-header class="header">
       <q-toolbar class="header__toolbar">
         <div class="flex items-center gap-5">
-          <div class="flex items-center cursor-pointer">
+          <div class="flex items-center cursor-pointer" @click="navigateTo(Routes.MAIN)">
             <q-icon size="28px" name="shopping_bag" />
             <q-toolbar-title>
               Webzone
@@ -33,25 +33,27 @@
 </template>
 
 <script setup lang="ts">
+import { Routes } from '~/types/routes';
+
 const links = [
   {
     label: 'Профиль',
-    to: '/',
+    to: Routes.PROFILE,
     icon: 'person'
   },
   {
     label: 'Заказы',
-    to: '/',
+    to: Routes.ORDERS,
     icon: 'receipt_long'
   },
   {
     label: 'Избранное',
-    to: '/',
+    to: Routes.FAVORITES,
     icon: 'favorite'
   },
   {
     label: 'Корзина',
-    to: '/',
+    to: Routes.CART,
     icon: 'shopping_cart'
   }
 ]

@@ -4,11 +4,14 @@
       v-for="product in data"
       :key="product.id"
       :product="product"
+      @navigate="(id) => navigateTo(Routes.PRODUCT(id))"
     />
   </div>
 </template>
 
 <script setup lang="ts">
+import { Routes } from '~/types/routes';
+
 const { $repos } = useNuxtApp()
 const { data } = await useAsyncData('products', () => $repos.products.getProducts())
 </script>

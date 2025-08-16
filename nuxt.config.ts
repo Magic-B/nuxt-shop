@@ -5,9 +5,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['nuxt-quasar-ui'],
   css: ['~/assets/css/global.scss'],
+  quasar: {
+    plugins: ['Dialog'],
+  },
   runtimeConfig: {
     public: {
       apiUrl: process.env.API_URL,
     }
+  },
+  experimental: {
+    typedPages: true,
   }
 })
