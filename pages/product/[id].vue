@@ -97,7 +97,6 @@ const handleOrderClick = async () => {
 }
 
 const handleAddToCart = () => {
-  
 }
 </script>
 

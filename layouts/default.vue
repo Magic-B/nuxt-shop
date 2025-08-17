@@ -10,10 +10,10 @@
             </q-toolbar-title>
           </div>
 
-          <q-btn icon="window" label="Каталог" no-caps color="white" text-color="primary" />
+          <q-btn icon="window" label="Каталог" outline no-caps text-color="primary" @click="navigateTo(Routes.CATALOG)" />
         </div>
 
-        <q-input class="w-100" v-model="search" bg-color="white" dense outlined placeholder="Поиск" />
+        <q-input class="w-100" v-model="search" bg-color="white" dense outlined placeholder="Поиск" :debounce="500" @update:model-value="handleSearch"/>
 
         <div class="flex items-center gap-5">
           <NuxtLink v-for="link in links" :key="link.to" :to="link.to">
@@ -58,7 +58,15 @@ const links = [
   }
 ]
 
-const search = ref('')
+const search = ref(process.client ? (localStorage.getItem('search') ?? '') : '')
+
+const handleSearch = (value: string) => {
+  localStorage.setItem('search', value)
+}
+
+onMounted(() => {
+  search.value = localStorage.getItem('search') ?? ''
+})
 </script>
 
 <style lang="scss" scoped>
@@ -66,6 +74,8 @@ const search = ref('')
   margin: 0 1rem;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  background-color: #fff;
+  color: var(--q-primary);
 
   &__toolbar {
     justify-content: space-between;

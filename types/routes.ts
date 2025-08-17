@@ -5,6 +5,7 @@ export const Routes = {
   ORDERS: '/orders',
   FAVORITES: '/favorites',
   CART: '/cart',
+  CATALOG: '/catalog',
 } as const
 
 export type Routes = typeof Routes[keyof typeof Routes]
