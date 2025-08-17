@@ -15,7 +15,7 @@
             </div>
 
             <div class="profile__info">
-              <h1 class="profile__name">{{ data?.login || 'Загрузка...' }}</h1>
+              <h1 class="profile__name">{{ data?.name || 'Загрузка...' }}</h1>
               <p class="profile__id">ID: {{ data?.id }}</p>
               
               <div class="profile__badges">
@@ -181,17 +181,10 @@ interface GithubUser {
   node_id: string
   avatar_url: string
   gravatar_id: string
+  name: string
 }
 
 const { data } = await useFetch<GithubUser>('https://api.github.com/users/magic-b')
-
-const formattedDate = computed(() => {
-  return new Date().toLocaleDateString('ru-RU', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-})
 
 const openProfile = () => {
   window.open('https://github.com/Magic-B', '_blank')
